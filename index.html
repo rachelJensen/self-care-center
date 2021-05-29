@@ -8,22 +8,30 @@
     <header>
       <h1>&#10024;Self Care Center&#10024;</h1>
     </header>
-    <h3>Which type of message?</h3>
-    <section class="container options-window">
-      <input type="radio" id="affirmation" name="message" value="affirmation">
-      <label for="affirmation">affirmation</label>
-      <input type="radio" id="mantra" name="message" value="mantra">
-      <label for="mantra">mantra</label><br>
-      <button id="receive-message" class="receive-message" type="button">Receive Message</button>
-    </section>
-    <section class="container message-window" id="message-window">
-      <div id="welcome" class="display">
-        <img class="small-image" id="meditator-img" src="assets/meditate.svg" alt "Bell Icon">
-      </div>
-      <div id="quote" class="display" hidden>
-        <p id="message"></p>
-      </div>
-    </section>
+    <main id="front-page" class="page">
+      <h3>Which type of message?</h3>
+      <section class="container options-window">
+        <input type="radio" id="affirmation" name="message" value="affirmation">
+        <label for="affirmation">affirmation</label>
+        <input type="radio" id="mantra" name="message" value="mantra">
+        <label for="mantra">mantra</label><br>
+        <button id="receive-message" class="button" type="button">Receive Message</button>
+      </section>
+      <section class="container message-window" id="message-window">
+        <div id="welcome" class="display">
+          <img class="small-image" id="meditator-img" src="assets/meditate.svg" alt "Bell Icon">
+        </div>
+        <div id="quote" class="display" hidden>
+          <p id="message"></p>
+        </div>
+      </section>
+      <button id="save-message" class="button" type="button" hidden>Favorite</button>
+      <button id="view-saved" class="button" type="button" hidden>View Favorites</button>
+    </main>
+
+    <main id="saved-page" class="page" hidden>
+      <h3>Favorites</h3>
+    </main>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
