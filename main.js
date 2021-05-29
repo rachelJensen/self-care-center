@@ -44,19 +44,27 @@ var message = document.getElementById('message');
 var welcomeIcon = document.getElementById('welcome');
 var messageDisplay = document.getElementById('quote');
 var saveMessageBtn = document.getElementById('save-message');
-//create selector for view saved button
 var viewSavedBtn = document.getElementById('view-saved');
-//create a selector for the front page
 var frontPageView = document.getElementById('front-page');
-//create a saved message page selectors
 var favoritesView = document.getElementById('saved-page');
+//selector for return to Main button
+var returnToMainBtn = document.getElementById('return-to-main');
+
 
 
 // EVENT LISTENERS
 receiveMessageBtn.addEventListener('click', displayQuote);
 saveMessageBtn.addEventListener('click', saveQuote);
-//create a listener that will switch to saved view when view saved is clicked
-viewSavedBtn.addEventListener('click', displayFavoritesPage);
+//update viewSavedBtn to use toggle function
+viewSavedBtn.addEventListener('click', function() {
+  togglePageView(frontPageView, favoritesView);
+});
+//create event listener for return to main button
+returnToMainBtn.addEventListener('click', function() {
+  togglePageView(favoritesView, frontPageView)
+});
+
+
 
 //FUNCTIONS
 function displayQuote() {
@@ -86,13 +94,16 @@ function getRandomNumber(array) {
 
 function saveQuote() {
   savedQuotes.push(currentQuote);
-  //display the view saved button once quote is saved
   viewSavedBtn.hidden = false;
 }
 
-function displayFavoritesPage() {
-  //hide the main page
-  frontPageView.hidden = true;
-  //display the saved page
-  favoritesView.hidden = false;
+//re-purpose to togglePageView
+// function displayFavoritesPage() {
+//   frontPageView.hidden = true;
+//   favoritesView.hidden = false;
+// }
+
+function togglePageView(toHide, toDisplay) {
+  toHide.hidden = true;
+  toDisplay.hidden = false;
 }
