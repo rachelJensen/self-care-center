@@ -105,6 +105,7 @@ function togglePageView(toHide, toDisplay) {
   toDisplay.hidden = false;
 };
 
+//add a delete button to each element via the html - line 115 and a half
 function displayFavorites() {
   displayedMessages.innerHTML = '';
 
@@ -112,6 +113,7 @@ function displayFavorites() {
     displayedMessages.innerHTML += `
       <div id="${savedQuotes[i].id}" class="container saved-window">
         <p>${savedQuotes[i].message}</p>
+        <button class="button mini" type="button">delete</button>
       </div>
     `;
   }

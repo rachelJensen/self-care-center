@@ -84,3 +84,8 @@ label {
 .mantra {
   padding-right: 25px;
 }
+
+.mini {
+  padding-left: 5px;
+  padding-right: 5px;
+}
