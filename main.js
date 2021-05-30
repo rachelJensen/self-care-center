@@ -1,6 +1,6 @@
 var mantras = [
   'Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.',
-  'Don’t let yesterday take up too much of today.',
+  'Don\'t let yesterday take up too much of today.',
   'Every day is a second chance.',
   'Tell the truth and love everyone.',
   'I am free from sadness.',
@@ -65,6 +65,8 @@ viewSavedBtn.addEventListener('click', displayFavorites);
 returnToMainBtn.addEventListener('click', function() {
   togglePageView(favoritesView, frontPageView)
 });
+//add an event listener for the delete buttons - target displayed-messages id
+displayedMessages.addEventListener('click', deleteSaved);
 
 
 
@@ -105,7 +107,6 @@ function togglePageView(toHide, toDisplay) {
   toDisplay.hidden = false;
 };
 
-//add a delete button to each element via the html - line 115 and a half
 function displayFavorites() {
   displayedMessages.innerHTML = '';
 
@@ -120,5 +121,18 @@ function displayFavorites() {
   togglePageView(frontPageView, favoritesView);
 };
 
-
-//
+function deleteSaved() {
+  //identify the id of the element to be removed
+  var clickedButton = event.target;
+  var clickedQuoteId = clickedButton.parentNode.id;
+  console.log(typeof clickedQuoteId);
+  //delete the quote with the that id from the savedQuotes array
+    // go through savedQuotes array to find the matching id property
+  for (var i = 0; i < savedQuotes.length; i++) {
+    if (Number(clickedQuoteId) === savedQuotes[i].id) {
+      savedQuotes.splice(i, 1);
+    }
+  }
+  //run the display function again to show the saved messages without the deleted one
+  displayFavorites();
+}
