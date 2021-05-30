@@ -22,7 +22,7 @@ feature/delete-saved-quotes
 
 feature/debugging-and-styling
 [x] prevent repeated saving of same message
-[ ] prevent saving of error messages
+[x] prevent saving of error messages
 [ ] fix spacing of radio buttons
 [ ] get better quotes
 
