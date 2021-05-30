@@ -13,24 +13,31 @@ var mantras = [
   'The only constant is change.',
   'Love is a light that never dwelleth in a heart possessed by fear.',
   'Onward and upward.',
-  'I am the sky, the rest is weather.',
-  'Where there is love, nothing is too much trouble, and there is always time.'
+  'Where there is love, nothing is too much trouble, and there is always time.',
+  'I surrender to the flow and have faith in the ultimate good.',
+  'While I support others, I also ask for help when needed.'
 ];
 
 var affirmations = [
   'I forgive myself and set myself free.',
   'I believe I can be all that I want to be.',
   'I am in the process of becoming the best version of myself.',
-  'I have the freedom & power to create the life I desire.',
+  'Today, I abandon my old habits and take up new, more positive ones.',
   'I choose to be kind to myself and love myself unconditionally.',
   'My possibilities are endless.',
-  'I am worthy of my dreams.',
+  'I am worthy of my place in the universe.',
   'I am enough.',
   'I deserve to be healthy and feel good.',
   'I am full of energy and vitality and my mind is calm and peaceful',
-  'Every day I am getting healthier and stronger.',
+  'Every day I am getting stronger and more capable.',
   'I honor my body by trusting the signals that it sends me.',
-  'I manifest perfect health by making smart choices.'
+  'I wake up today with strength in my heart and clarity in my mind.',
+  'My nature is Divine; I am a spiritual being.',
+  'My fears of tomorrow are simply melting away.',
+  'My thoughts are filled with positivity and my life is plentiful with prosperity.',
+  'Happiness is a choice. I base my happiness on my own accomplishments and the blessings I\'ve been given.',
+  'I am courageous and I stand up for myself.',
+  'I forgive those who have harmed me in my past and peacefully detach from them.'
 ];
 
 class Message {
@@ -96,7 +103,16 @@ function getRandomNumber(array) {
 };
 
 function saveQuote() {
-  //Add edge case to avoid pushing the error message to the savedQuotes
+  for (var i = 0; i < savedQuotes.length; i++) {
+    if (savedQuotes[i].message === currentQuote.message) {
+      return;
+    }
+  }
+  // prevent error message from being saved
+  if (currentQuote.message === "[Please make a selection]") {
+    return;
+  }
+
   savedQuotes.push(currentQuote);
   viewSavedBtn.hidden = false;
 };
