@@ -25,4 +25,7 @@ Mantras are phrases that are repeated again and again during mindfulness practic
 #### Favorite Page
 - The favorites page displays all of the user's saved mantras and affirmations in one convenient place
 - If a user doesn't want to keep a mantra or affirmation, they can easily delete it from their favorites with a click of a button
-- They can return to main page to explore more positive messages by clicking the Return to Main button
+- They can return to main page to explore more positive messages by clicking the Return to Main button 
+
+## Acknowledgements
+Thanks to Turing School of Software & Design for project specs.
