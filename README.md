@@ -11,9 +11,10 @@ feature/save-favorite-button
 feature/display-saved-quotes
 [x] make main page hide-able
 [x] make saved quotes page displayable
-[ ] create return to main button
-[ ] create quote containers for display in html
-[ ]
+[x] create return to main button
+[x] give return button functionality
+[x] create quote containers for display in html
+[x] use savedQuotes array to display the quotes on the page
 
 feature/delete-saved-quotes
 [ ]
