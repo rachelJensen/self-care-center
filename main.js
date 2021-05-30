@@ -65,7 +65,6 @@ viewSavedBtn.addEventListener('click', displayFavorites);
 returnToMainBtn.addEventListener('click', function() {
   togglePageView(favoritesView, frontPageView)
 });
-//add an event listener for the delete buttons - target displayed-messages id
 displayedMessages.addEventListener('click', deleteSaved);
 
 
@@ -122,17 +121,14 @@ function displayFavorites() {
 };
 
 function deleteSaved() {
-  //identify the id of the element to be removed
   var clickedButton = event.target;
   var clickedQuoteId = clickedButton.parentNode.id;
-  console.log(typeof clickedQuoteId);
-  //delete the quote with the that id from the savedQuotes array
-    // go through savedQuotes array to find the matching id property
+
   for (var i = 0; i < savedQuotes.length; i++) {
     if (Number(clickedQuoteId) === savedQuotes[i].id) {
       savedQuotes.splice(i, 1);
     }
   }
-  //run the display function again to show the saved messages without the deleted one
+
   displayFavorites();
 }
