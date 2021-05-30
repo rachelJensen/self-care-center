@@ -13,7 +13,7 @@ Mantras are phrases that are repeated again and again during mindfulness practic
 
 ## Demonstration
 ![Self Care Center screenshot](https://user-images.githubusercontent.com/81662051/120121892-316bbf00-c163-11eb-97dd-d4124ca50280.png)
-[Deployed Page](https://racheljensen.github.io/self-care-center/)
+[Explore the webpage here](https://racheljensen.github.io/self-care-center/)
 
 ## Usage
 #### Main Page
