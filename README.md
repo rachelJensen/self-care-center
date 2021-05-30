@@ -23,8 +23,10 @@ feature/delete-saved-quotes
 feature/debugging-and-styling
 [x] prevent repeated saving of same message
 [x] prevent saving of error messages
-[ ] fix spacing of radio buttons
-[ ] get better quotes
+[x] refine styling of saved page
+[x] fix spacing of radio buttons
+[x] get better quotes
+[ ] write README
 
 
 ## Overview
