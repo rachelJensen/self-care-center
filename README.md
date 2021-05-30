@@ -17,7 +17,13 @@ feature/display-saved-quotes
 [x] use savedQuotes array to display the quotes on the page
 
 feature/delete-saved-quotes
-[ ]
+[x] add a button to each quotes
+[ ] use an event target to add delete function to button
+
+feature/debugging-and-styling
+[ ] prevent repeated saving of same message
+[ ] prevent saving of error messages
+[ ] fix spacing of radio buttons
 
 
 ## Overview
