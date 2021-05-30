@@ -1,23 +1,4 @@
-var mantras = [
-  'Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.',
-  'Don\'t let yesterday take up too much of today.',
-  'Every day is a second chance.',
-  'Tell the truth and love everyone.',
-  'I am free from sadness.',
-  'I am enough.',
-  'I love myself.',
-  'I am present now.',
-  'Inhale the future, exhale the past.',
-  'This too shall pass.',
-  'Yesterday is not today.',
-  'The only constant is change.',
-  'Love is a light that never dwelleth in a heart possessed by fear.',
-  'Onward and upward.',
-  'Where there is love, nothing is too much trouble, and there is always time.',
-  'I surrender to the flow and have faith in the ultimate good.',
-  'While I support others, I also ask for help when needed.'
-];
-
+//global variables
 var affirmations = [
   'I forgive myself and set myself free.',
   'I believe I can be all that I want to be.',
@@ -40,6 +21,59 @@ var affirmations = [
   'I forgive those who have harmed me in my past and peacefully detach from them.'
 ];
 
+var mantras = [
+  'Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.',
+  'Don\'t let yesterday take up too much of today.',
+  'Every day is a second chance.',
+  'Tell the truth and love everyone.',
+  'I am free from sadness.',
+  'I am enough.',
+  'I love myself.',
+  'I am present now.',
+  'Inhale the future, exhale the past.',
+  'This too shall pass.',
+  'Yesterday is not today.',
+  'The only constant is change.',
+  'Love is a light that never dwelleth in a heart possessed by fear.',
+  'Onward and upward.',
+  'Where there is love, nothing is too much trouble, and there is always time.',
+  'I surrender to the flow and have faith in the ultimate good.',
+  'While I support others, I also ask for help when needed.'
+];
+
+var currentQuote = "";
+var savedQuotes = [];
+
+// SELECTORS
+// buttons
+var receiveMessageBtn = document.getElementById('receive-message');
+var returnToMainBtn = document.getElementById('return-to-main');
+var saveMessageBtn = document.getElementById('save-message');
+var selectAffirmation = document.getElementById('affirmation');
+var selectMantra = document.getElementById('mantra');
+var viewSavedBtn = document.getElementById('view-saved');
+
+// display elements
+var displayedMessages = document.getElementById('displayed-messages');
+var favoritesView = document.getElementById('saved-page');
+var frontPageView = document.getElementById('front-page');
+var message = document.getElementById('message');
+var messageDisplay = document.getElementById('quote');
+var welcomeIcon = document.getElementById('welcome');
+
+
+// EVENT LISTENERS
+displayedMessages.addEventListener('click', deleteSaved);
+receiveMessageBtn.addEventListener('click', displayQuote);
+returnToMainBtn.addEventListener('click', function() {
+  togglePageView(favoritesView, frontPageView)
+});
+saveMessageBtn.addEventListener('click', saveQuote);
+viewSavedBtn.addEventListener('click', displayFavorites);
+
+
+
+//FUNCTIONS
 class Message {
   constructor(quote) {
     this.id = Date.now();
@@ -47,43 +81,45 @@ class Message {
   }
 }
 
-var currentQuote = "";
-var savedQuotes = [];
+function deleteSaved() {
+  var clickedButton = event.target;
+  var clickedQuoteId = clickedButton.parentNode.id;
 
-// SELECTORS
-var selectAffirmation = document.getElementById('affirmation');
-var selectMantra = document.getElementById('mantra');
-var receiveMessageBtn = document.getElementById('receive-message');
-var message = document.getElementById('message');
-var welcomeIcon = document.getElementById('welcome');
-var messageDisplay = document.getElementById('quote');
-var saveMessageBtn = document.getElementById('save-message');
-var viewSavedBtn = document.getElementById('view-saved');
-var frontPageView = document.getElementById('front-page');
-var favoritesView = document.getElementById('saved-page');
-var returnToMainBtn = document.getElementById('return-to-main');
-var displayedMessages = document.getElementById('displayed-messages');
+  for (var i = 0; i < savedQuotes.length; i++) {
+    if (Number(clickedQuoteId) === savedQuotes[i].id) {
+      savedQuotes.splice(i, 1);
+    }
+  }
 
+  displayFavorites();
+};
 
-// EVENT LISTENERS
-receiveMessageBtn.addEventListener('click', displayQuote);
-saveMessageBtn.addEventListener('click', saveQuote);
-viewSavedBtn.addEventListener('click', displayFavorites);
-returnToMainBtn.addEventListener('click', function() {
-  togglePageView(favoritesView, frontPageView)
-});
-displayedMessages.addEventListener('click', deleteSaved);
+function displayFavorites() {
+  displayedMessages.innerHTML = '';
 
+  for (var i = 0; i < savedQuotes.length; i++) {
+    displayedMessages.innerHTML += `
+      <div id="${savedQuotes[i].id}" class="container saved-window">
+        <p>${savedQuotes[i].message}</p>
+        <button class="button mini" type="button">delete</button>
+      </div>
+    `;
+  }
+  togglePageView(frontPageView, favoritesView);
+};
 
-
-//FUNCTIONS
 function displayQuote() {
   getQuote();
   message.innerText = currentQuote.message;
   messageDisplay.hidden = false;
   welcomeIcon.hidden = true;
   saveMessageBtn.hidden = false;
-}
+};
+
+function getRandomNumber(array) {
+  var random = Math.floor(Math.random() * array.length);
+  return random;
+};
 
 function getQuote() {
   if (selectAffirmation.checked) {
@@ -95,11 +131,6 @@ function getQuote() {
   } else {
     currentQuote = {message: "[Please make a selection]"};
   }
-};
-
-function getRandomNumber(array) {
-  var random = Math.floor(Math.random() * array.length);
-  return random;
 };
 
 function saveQuote() {
@@ -121,30 +152,3 @@ function togglePageView(toHide, toDisplay) {
   toHide.hidden = true;
   toDisplay.hidden = false;
 };
-
-function displayFavorites() {
-  displayedMessages.innerHTML = '';
-
-  for (var i = 0; i < savedQuotes.length; i++) {
-    displayedMessages.innerHTML += `
-      <div id="${savedQuotes[i].id}" class="container saved-window">
-        <p>${savedQuotes[i].message}</p>
-        <button class="button mini" type="button">delete</button>
-      </div>
-    `;
-  }
-  togglePageView(frontPageView, favoritesView);
-};
-
-function deleteSaved() {
-  var clickedButton = event.target;
-  var clickedQuoteId = clickedButton.parentNode.id;
-
-  for (var i = 0; i < savedQuotes.length; i++) {
-    if (Number(clickedQuoteId) === savedQuotes[i].id) {
-      savedQuotes.splice(i, 1);
-    }
-  }
-
-  displayFavorites();
-}
