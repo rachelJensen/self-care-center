@@ -33,7 +33,6 @@ var affirmations = [
   'I manifest perfect health by making smart choices.'
 ];
 
-//create a message class that will assign a message and id property to each instance
 class Message {
   constructor(quote) {
     this.id = Date.now();
@@ -44,7 +43,7 @@ class Message {
 var currentQuote = "";
 var savedQuotes = [];
 
-// selectors
+// SELECTORS
 var selectAffirmation = document.getElementById('affirmation');
 var selectMantra = document.getElementById('mantra');
 var receiveMessageBtn = document.getElementById('receive-message');
@@ -62,9 +61,6 @@ var displayedMessages = document.getElementById('displayed-messages');
 // EVENT LISTENERS
 receiveMessageBtn.addEventListener('click', displayQuote);
 saveMessageBtn.addEventListener('click', saveQuote);
-// viewSavedBtn.addEventListener('click', function() {
-//   togglePageView(frontPageView, favoritesView);
-// });
 viewSavedBtn.addEventListener('click', displayFavorites);
 returnToMainBtn.addEventListener('click', function() {
   togglePageView(favoritesView, frontPageView)
@@ -75,7 +71,7 @@ returnToMainBtn.addEventListener('click', function() {
 //FUNCTIONS
 function displayQuote() {
   getQuote();
-  message.innerText = currentQuote.message; //REFACTOR for object instance
+  message.innerText = currentQuote.message;
   messageDisplay.hidden = false;
   welcomeIcon.hidden = true;
   saveMessageBtn.hidden = false;
@@ -91,31 +87,27 @@ function getQuote() {
   } else {
     currentQuote = {message: "[Please make a selection]"};
   }
-}
-
+};
 
 function getRandomNumber(array) {
   var random = Math.floor(Math.random() * array.length);
   return random;
-}
+};
 
 function saveQuote() {
   //Add edge case to avoid pushing the error message to the savedQuotes
   savedQuotes.push(currentQuote);
   viewSavedBtn.hidden = false;
-}
+};
 
 function togglePageView(toHide, toDisplay) {
   toHide.hidden = true;
   toDisplay.hidden = false;
-}
+};
 
-//function to display the saved quotes
 function displayFavorites() {
-  //edge case - may need to empty the display to prevent repeats
   displayedMessages.innerHTML = '';
-  //go through the savedQuotes array
-    //add each quote and it's html formating to the page
+
   for (var i = 0; i < savedQuotes.length; i++) {
     displayedMessages.innerHTML += `
       <div id="${savedQuotes[i].id}" class="container saved-window">
@@ -123,9 +115,8 @@ function displayFavorites() {
       </div>
     `;
   }
-
   togglePageView(frontPageView, favoritesView);
-}
+};
 
 
 //
