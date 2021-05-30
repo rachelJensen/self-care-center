@@ -97,6 +97,12 @@ function getRandomNumber(array) {
 
 function saveQuote() {
   //Add edge case to avoid pushing the error message to the savedQuotes
+  for (var i = 0; i < savedQuotes.length; i++) {
+    if (savedQuotes[i].id === currentQuote.id) {
+      return;
+    }
+  }
+
   savedQuotes.push(currentQuote);
   viewSavedBtn.hidden = false;
 };

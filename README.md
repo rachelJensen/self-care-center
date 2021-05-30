@@ -18,12 +18,13 @@ feature/display-saved-quotes
 
 feature/delete-saved-quotes
 [x] add a button to each quotes
-[ ] use an event target to add delete function to button
+[x] use an event target to add delete function to button
 
 feature/debugging-and-styling
-[ ] prevent repeated saving of same message
+[x] prevent repeated saving of same message
 [ ] prevent saving of error messages
 [ ] fix spacing of radio buttons
+[ ] get better quotes
 
 
 ## Overview
