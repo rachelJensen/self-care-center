@@ -13,8 +13,8 @@ feature/display-saved-quotes
 [x] make saved quotes page displayable
 [x] create return to main button
 [x] give return button functionality
-[ ] create quote containers for display in html
-[ ] use savedQuotes array to display the 
+[x] create quote containers for display in html
+[x] use savedQuotes array to display the quotes on the page
 
 feature/delete-saved-quotes
 [ ]

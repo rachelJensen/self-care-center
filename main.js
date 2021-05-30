@@ -33,6 +33,14 @@ var affirmations = [
   'I manifest perfect health by making smart choices.'
 ];
 
+//create a message class that will assign a message and id property to each instance
+class Message {
+  constructor(quote) {
+    this.id = Date.now();
+    this.message = quote;
+  }
+}
+
 var currentQuote = "";
 var savedQuotes = [];
 
@@ -47,19 +55,17 @@ var saveMessageBtn = document.getElementById('save-message');
 var viewSavedBtn = document.getElementById('view-saved');
 var frontPageView = document.getElementById('front-page');
 var favoritesView = document.getElementById('saved-page');
-//selector for return to Main button
 var returnToMainBtn = document.getElementById('return-to-main');
-
+var displayedMessages = document.getElementById('displayed-messages');
 
 
 // EVENT LISTENERS
 receiveMessageBtn.addEventListener('click', displayQuote);
 saveMessageBtn.addEventListener('click', saveQuote);
-//update viewSavedBtn to use toggle function
-viewSavedBtn.addEventListener('click', function() {
-  togglePageView(frontPageView, favoritesView);
-});
-//create event listener for return to main button
+// viewSavedBtn.addEventListener('click', function() {
+//   togglePageView(frontPageView, favoritesView);
+// });
+viewSavedBtn.addEventListener('click', displayFavorites);
 returnToMainBtn.addEventListener('click', function() {
   togglePageView(favoritesView, frontPageView)
 });
@@ -69,7 +75,7 @@ returnToMainBtn.addEventListener('click', function() {
 //FUNCTIONS
 function displayQuote() {
   getQuote();
-  message.innerText = currentQuote;
+  message.innerText = currentQuote.message; //REFACTOR for object instance
   messageDisplay.hidden = false;
   welcomeIcon.hidden = true;
   saveMessageBtn.hidden = false;
@@ -78,14 +84,15 @@ function displayQuote() {
 function getQuote() {
   if (selectAffirmation.checked) {
     var randomIndex = getRandomNumber(affirmations);
-    currentQuote = affirmations[randomIndex];
+    currentQuote = new Message(affirmations[randomIndex]);
   } else if (selectMantra.checked) {
     var randomIndex = getRandomNumber(mantras);
-    currentQuote = mantras[randomIndex];
+    currentQuote = new Message(mantras[randomIndex]);
   } else {
-    currentQuote = "[Please make a selection]";
+    currentQuote = {message: "[Please make a selection]"};
   }
 }
+
 
 function getRandomNumber(array) {
   var random = Math.floor(Math.random() * array.length);
@@ -93,17 +100,32 @@ function getRandomNumber(array) {
 }
 
 function saveQuote() {
+  //Add edge case to avoid pushing the error message to the savedQuotes
   savedQuotes.push(currentQuote);
   viewSavedBtn.hidden = false;
 }
-
-//re-purpose to togglePageView
-// function displayFavoritesPage() {
-//   frontPageView.hidden = true;
-//   favoritesView.hidden = false;
-// }
 
 function togglePageView(toHide, toDisplay) {
   toHide.hidden = true;
   toDisplay.hidden = false;
 }
+
+//function to display the saved quotes
+function displayFavorites() {
+  //edge case - may need to empty the display to prevent repeats
+  displayedMessages.innerHTML = '';
+  //go through the savedQuotes array
+    //add each quote and it's html formating to the page
+  for (var i = 0; i < savedQuotes.length; i++) {
+    displayedMessages.innerHTML += `
+      <div id="${savedQuotes[i].id}" class="container saved-window">
+        <p>${savedQuotes[i].message}</p>
+      </div>
+    `;
+  }
+
+  togglePageView(frontPageView, favoritesView);
+}
+
+
+//

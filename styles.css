@@ -16,35 +16,45 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-h1, h3 {
+h1, h2 {
   color: white;
-  margin: 50px auto;
+  margin: 80px auto;
 }
 
-h3 {
+h2 {
   margin-bottom: 5px;
+  font-weight: lighter;
 }
 
 .container {
   background-color: white;
   padding-left: 20px;
-  padding-top: 25px;
-  padding-bottom: 10px;
+  /* padding-top: 25px;
+  padding-bottom: 10px; */
   margin-bottom:25px;
   margin: 5px auto 60px auto;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .options-window {
-  width: 50%;
+  width: 40%;
   min-width: 401px;
+  padding: 15px 25px 10px 25px;
 }
 
 .message-window {
-  width: 70%;
+  width: 60%;
   min-width: 600px;
-  margin-top: 90px;
+  margin-top: 100px;
+  font-size: 24px;
+  padding: 35px;
 }
+
+/* .saved-window {
+  width:60%;
+  margin: 25px 25px 25px 25px;
+  font-size: 24px;
+} */
 
 .small-image {
   width: 80px;
@@ -62,6 +72,12 @@ h3 {
 
 label {
   font-style: oblique;
-  padding-left: 5px;
-  padding-right: 90px;
+}
+
+.affirmation {
+  padding-right: 25px;
+}
+
+.mantra {
+  padding-right: 25px;
 }

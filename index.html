@@ -9,17 +9,18 @@
       <h1>&#10024;Self Care Center&#10024;</h1>
     </header>
     <main id="front-page" class="page">
-      <h3>Which type of message?</h3>
+      <h2>Which type of message?</h2>
       <section class="container options-window">
         <input type="radio" id="affirmation" name="message" value="affirmation">
-        <label for="affirmation">affirmation</label>
+        <label class"affirmation" for="affirmation">affirmation</label>
         <input type="radio" id="mantra" name="message" value="mantra">
-        <label for="mantra">mantra</label><br>
+        <label class="mantra" for="mantra">mantra</label>
+        <br>
         <button id="receive-message" class="button" type="button">Receive Message</button>
       </section>
       <section class="container message-window" id="message-window">
         <div id="welcome" class="display">
-          <img class="small-image" id="meditator-img" src="assets/meditate.svg" alt "Bell Icon">
+          <img class="small-image" id="meditator-img" src="assets/meditate.svg" alt "Meditation Icon">
         </div>
         <div id="quote" class="display" hidden>
           <p id="message"></p>
@@ -31,6 +32,11 @@
 
     <main id="saved-page" class="page" hidden>
       <h3>Favorites</h3>
+      <section id="displayed-messages">
+        <div class="container saved-window">
+          <p></p>
+        </div>
+      </section>
       <button id="return-to-main" class="button" type="button">Return to Main</button>
     </main>
     <script type="text/javascript" src="main.js"></script>
